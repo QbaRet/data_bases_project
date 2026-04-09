@@ -1,7 +1,6 @@
 import database as db
 import os
 
-# Kolory dla terminala
 C_RESET = "\033[0m"
 C_BOLD = "\033[1m"
 C_GREEN = "\033[32m"
@@ -29,7 +28,6 @@ def print_header(title):
 
 def main_menu():
     print_header("FOOTBALL MATCH CENTER")
-    # Menu dostosowane do stanu zalogowania
     if not current_user:
         print(f"{C_CYAN}1.{C_RESET} Logowanie")
         print(f"{C_CYAN}2.{C_RESET} Rejestracja nowego konta") # NOWA OPCJA
@@ -74,7 +72,7 @@ def register_screen():
     else:
         print(f"\n{C_RED}❌ {message}{C_RESET}")
     
-    input("\n[Enter] aby wrócić...")
+    input("\n[Enter] aby wrócić")
 def login():
     global current_user
     print_header("LOGOWANIE")
@@ -86,7 +84,7 @@ def login():
         print(f"\n{C_GREEN} Zalogowano pomyślnie!{C_RESET}")
     else:
         print(f"\n{C_RED} Błąd logowania.{C_RESET}")
-    input("\n[Enter] aby kontynuować...")
+    input("\n[Enter] aby kontynuować")
 
 def view_match_details():
     match_id = input("\n⚽ Podaj ID meczu, aby zobaczyć strzelców (lub Enter by pominąć): ")
@@ -95,7 +93,7 @@ def view_match_details():
     details = db.get_match_details(match_id)
     if not details:
         print(f"{C_RED}Nie znaleziono meczu.{C_RESET}")
-        input("Enter...")
+        input("Enter")
         return
 
     info = details['info']
@@ -155,7 +153,7 @@ def show_standings():
         goals = f"{stats['gz']}-{stats['gs']}"
         print(f"{color}{i:<4}{C_RESET} | {team:<20} | {stats['m']:<3} | {C_BOLD}{stats['pts']:<4}{C_RESET} | {stats['w']:<3} | {stats['d']:<3} | {stats['l']:<3} | {goals}")
     
-    input("\n[Enter] aby wrócić...")
+    input("\n[Enter] aby wrócić")
 
 def search_team():
     print_header("WYSZUKIWARKA")
